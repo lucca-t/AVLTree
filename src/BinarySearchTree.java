@@ -83,6 +83,17 @@ public class BinarySearchTree {
         return temp.trim();
     }
 
+    public String inOrder(){
+       return inOrder(root);
+
+    }
+    public String inOrder(BinaryNode root){
+        String result="";
+        result+=root.left();
+        result+=root.getValue()+" ";
+        result+=root.right();
+        return result;
+    }
     public int getHeight()
     {
         return getHeight(root);
@@ -242,7 +253,7 @@ public class BinarySearchTree {
         for(String k:list)
             tree.add(new BinaryNode(Integer.parseInt(k)));
 
-        System.out.println(tree.toString());
+        System.out.println(tree.inOrder());
 
     }
 
