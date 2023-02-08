@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,9 +12,9 @@ public class BinaryNode {
         myValue=x;
     }
 
-
-
-
+    public static BinaryNode add(int value) {
+        return new BinaryNode(value);
+    }
 
 
     public void setValue(Comparable value) {
@@ -34,6 +35,7 @@ public class BinaryNode {
     public void setRight(BinaryNode x){
         right=x;
     }
+
 
 
 

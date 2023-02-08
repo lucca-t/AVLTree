@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class BinarySearchTree {
     private BinaryNode root;
@@ -89,15 +91,32 @@ public class BinarySearchTree {
     }
     public String inOrder(BinaryNode root){
         String result="";
-        result+=root.left();
+        if(root==null)
+            return result;
+        result+=inOrder(root.left());
         result+=root.getValue()+" ";
-        result+=root.right();
+        result+=inOrder(root.right());
         return result;
     }
     public int getHeight()
     {
         return getHeight(root);
     }
+    public String postOrder(BinaryNode root) {
+        if (root == null) {
+            return "";
+        }
+        String output = postOrder(root.left());
+        output += postOrder(root.right());
+        output += root.getValue() + " ";
+        return output;
+    }
+    public String postOrder(){
+        return postOrder(root);
+    }
+
+
+
 
     private int getHeight(BinaryNode k)
     {
@@ -106,7 +125,7 @@ public class BinarySearchTree {
                 getHeight(k.right()));
     }
 
-    public BinaryNode remove(Comparable target)
+    BinaryNode remove(Comparable target)
     {
         if(root == null) return null;
         BinaryNode temp = root;
@@ -253,10 +272,20 @@ public class BinarySearchTree {
         for(String k:list)
             tree.add(new BinaryNode(Integer.parseInt(k)));
 
-        System.out.println(tree.inOrder());
+        //System.out.println("in Order "+tree.inOrder());
+       // System.out.println("pre Order "+tree.preOrder());
+        System.out.println("level Order "+tree.levelOrder());
+        //System.out.println("post Order"+tree.postOrder());
 
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()) {
+            tree.remove(in.nextInt());
+            System.out.println("level Order " + tree.levelOrder());
+        }
     }
-
+    public BinaryNode getNode(){
+        return root;
+    }
 
 
 }
